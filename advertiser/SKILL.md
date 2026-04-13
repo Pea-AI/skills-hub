@@ -1,18 +1,18 @@
 ---
 name: advertiser
 description: |
-  Advertiser data query and management tool. Query ad performance data, create and manage campaigns via API Key.
+  Advertiser data query and management tool. Query ad performance data, create and manage campaigns via Open API Key.
   Triggers: 'ad data', 'ad performance', 'advertiser', 'campaign', 'ad status', 'create ad', 'pause ad'.
 metadata:
   author: ads3
-  version: "1.0"
+  version: "1.0.0"
 ---
 
 # Advertiser Skill
 
 ## Overview
 
-Manage ad campaigns and query performance data via API Key.
+Manage ad campaigns and query performance data via Open API Key.
 
 ---
 
@@ -24,7 +24,7 @@ Two authentication methods are supported (choose one):
 
 | Header | Description |
 |--------|-------------|
-| open-api-key | **Recommended** - API Key generated in dashboard |
+| open-api-key | **Recommended** - Open API Key generated in dashboard |
 | token | JWT Token obtained after login |
 
 ### API Base URL
@@ -507,7 +507,7 @@ curl -X POST 'https://app.ads3.ai/api/v2/ad/campaign/end' \
 
 ## Security
 
-### Never Display Full API Keys
+### Never Display Full Open API Keys
 
 When showing credentials to users:
 - **open-api-key**: Show first 8 + last 4 characters: `sk_live_...xyz9`
@@ -516,9 +516,9 @@ When showing credentials to users:
 
 ## Agent Behavior
 
-1. **Check API Key before calls**: Verify that open-api-key is configured
-2. **Prompt for API Key if missing**: If API Key is not provided, ask user to get one from the dashboard first
-3. **Never display full API Keys**: Only show first 8 + last 4 characters (e.g., `sk_live_...xyz9`)
+1. **Check Open API Key before calls**: Verify that open-api-key is configured
+2. **Prompt for Open API Key if missing**: If Open API Key is not provided, ask user to get one from the dashboard first
+3. **Never display full Open API Keys**: Only show first 8 + last 4 characters (e.g., `sk_live_...xyz9`)
 4. **Confirm before mutations**: Before creating, pausing, or ending campaigns, show a summary and ask for confirmation
 5. **Show cost implications**: When creating campaigns, calculate and display estimated daily/total spend
 6. **Format numbers nicely**: Use appropriate decimal places (cost: 2, CTR/CVR: 2, counts: 0)
@@ -526,21 +526,21 @@ When showing credentials to users:
 
 ---
 
-## How to Get API Key
+## How to Get Open API Key
 
-Users can obtain an API Key by:
+Users can obtain an Open API Key by:
 
 1. Login to https://app.ads3.ai dashboard
-2. Navigate to **Account** → **API Keys** page
-3. Click **Create API Key** button
+2. Navigate to **Account** → **Open API Keys** page
+3. Click **Create Open API Key** button
 4. Enter a key name (e.g., "My Skill Key")
-5. Click create and **immediately copy and save** the API Key
-6. **Note**: API Key is only shown once upon creation, please save it securely
+5. Click create and **immediately copy and save** the Open API Key
+6. **Note**: Open API Key is only shown once upon creation, please save it securely
 
-### API Key Format
+### Open API Key Format
 
 ```
-YOUR_API_KEY
+sk_live_xxxx...xxxx
 ```
 
 ---
@@ -551,5 +551,5 @@ YOUR_API_KEY
 2. Timestamps use milliseconds (ms)
 3. Newly created campaigns require review before running
 4. Campaigns are paused by system when account balance is insufficient
-5. Each user can create up to 5 API Keys
-6. API Keys support expiration time, or can be set to never expire
+5. Each user can create up to 5 Open API Keys
+6. Open API Keys support expiration time, or can be set to never expire

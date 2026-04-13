@@ -38,26 +38,26 @@ cp -r skills-hub/advertiser .claude/skills/
 
 | Skill | Description | Authentication |
 |-------|-------------|----------------|
-| [advertiser](./advertiser) | Manage ad campaigns, query performance data, create/pause/resume ads | API Key |
+| [advertiser](./advertiser) | Manage ad campaigns, query performance data, create/pause/resume ads | Open API Key |
 
 ## Authentication
 
 Before using Ads3 Skills Hub, you need to provide API credentials.
 
-### Getting Your API Key
+### Getting Your Open API Key
 
 1. Login to [Ads3 Dashboard](https://app.ads3.ai)
-2. Navigate to **Account** → **API Keys**
-3. Click **Create API Key**
-4. Copy and save your API key securely (only shown once)
+2. Navigate to **Account** → **Open API Keys**
+3. Click **Create Open API Key**
+4. Copy and save your Open API key securely (only shown once)
 
-### API Key Format
+### Open API Key Format
 
 ```
 sk_live_xxxx...xxxx
 ```
 
-### Using the API Key
+### Using the Open API Key
 
 Add the `open-api-key` header to your requests:
 
@@ -118,8 +118,8 @@ Ads3 Skills Hub is compatible with:
 
 ## Security Notes
 
-- **Never share your API Key** - Keep it confidential
-- **API Keys are shown only once** - Save immediately after creation
+- **Never share your Open API Key** - Keep it confidential
+- **Open API Keys are shown only once** - Save immediately after creation
 - **Revoke compromised keys** - Delete and create new ones if exposed
 - **Use environment variables** - Don't hardcode keys in your code
 
