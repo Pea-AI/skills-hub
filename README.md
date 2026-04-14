@@ -39,6 +39,7 @@ cp -r skills-hub/advertiser .claude/skills/
 | Skill | Description | Authentication |
 |-------|-------------|----------------|
 | [advertiser](./advertiser) | Manage ad campaigns, query performance data, create/pause/resume ads | Open API Key |
+| [publisher](./publisher) | Query platform and block earnings, check balance, submit withdrawals | Open API Key |
 
 ## Authentication
 
@@ -84,6 +85,23 @@ Manage your advertising campaigns with AI assistance:
 - "Pause campaign ID xyz123"
 - "Create a new CPC campaign targeting Southeast Asia"
 
+### Publisher Skill
+
+Manage your publisher account and track monetization with AI assistance:
+
+- **Query Platforms** - List platforms with real-time earnings metrics
+- **Query Blocks** - List ad placements per platform with performance data
+- **Daily Revenue** - View daily breakdown of impressions, clicks, and earnings per block
+- **Balance & History** - Check your USDT balance and transaction history
+- **Withdraw Earnings** - Submit withdrawals to your external wallet (min 10 USDT, free)
+
+**Example Prompts:**
+- "Show me all my platforms"
+- "What's the revenue for my Telegram bot this week?"
+- "Show daily breakdown for block xyz"
+- "What's my current balance?"
+- "Withdraw 50 USDT to my Arbitrum wallet"
+
 ## API Base URL
 
 ```
@@ -104,6 +122,20 @@ https://app.ads3.ai/api/v2
 | PATCH | `/ad/campaign/:id/pause` | Pause campaign |
 | PATCH | `/ad/campaign/:id/resume` | Resume campaign |
 | POST | `/ad/campaign/end` | End campaign |
+| POST | `/recharge/user/wallets` | Get deposit wallet addresses |
+
+### Publisher APIs
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/publisher/platforms` | List platforms with metrics |
+| GET | `/publisher/platform/:id` | Platform details |
+| GET | `/publisher/blocks` | List blocks for a platform |
+| GET | `/publisher/block/summary/:id` | Daily block performance |
+| GET | `/user/asset/publisher` | Publisher earnings balance |
+| GET | `/user/asset/advertiser/flow` | Transaction history |
+| POST | `/withdraw/basic` | Withdrawal config (min, fee, chains) |
+| POST | `/withdraw` | Submit a withdrawal |
 
 ## Compatibility
 
