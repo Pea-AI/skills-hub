@@ -5,7 +5,7 @@ description: |
   Triggers: 'ad data', 'ad performance', 'advertiser', 'campaign', 'ad status', 'create ad', 'pause ad'.
 metadata:
   author: ads3
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # Advertiser Skill
@@ -514,6 +514,108 @@ When showing credentials to users:
 
 ---
 
+## API: Get Recharge Wallets
+
+Get the user's personal deposit wallet addresses for topping up account balance.
+
+### Method: POST
+
+**URL**:
+```
+/recharge/user/wallets
+```
+
+**Request Body**: None (no body required)
+
+### Example Request
+
+```bash
+curl -X POST 'https://app.ads3.ai/api/v2/recharge/user/wallets' \
+  -H 'open-api-key: YOUR_API_KEY'
+```
+
+### Response Example
+
+```json
+{
+  "list": [
+    {
+      "chain": "bnbChain",
+      "name": "BNB Chain",
+      "walletAddress": "0xAbCd...1234",
+      "isValid": true,
+      "classify": "evm"
+    },
+    {
+      "chain": "arbitrum",
+      "name": "Arbitrum Network",
+      "walletAddress": "0xEfGh...5678",
+      "isValid": true,
+      "classify": "evm"
+    },
+    {
+      "chain": "tron",
+      "name": "Tron Network",
+      "walletAddress": "",
+      "isValid": false,
+      "classify": "evm"
+    },
+    {
+      "chain": "ton",
+      "name": "Ton Network",
+      "walletAddress": "",
+      "isValid": false,
+      "classify": "ton"
+    }
+  ]
+}
+```
+
+### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| list[].chain | string | Chain identifier (e.g. `bnbChain`, `arbitrum`) |
+| list[].name | string | Human-readable chain name |
+| list[].walletAddress | string | User's deposit address for this chain (empty if not yet assigned) |
+| list[].isValid | boolean | Whether this chain is currently supported for deposits |
+| list[].classify | string | Chain type: `evm` or `ton` |
+
+> **Note**: Only show entries where `isValid: true` and `walletAddress` is non-empty. Currently supported chains: **BNB Chain** and **Arbitrum Network**. Tron and TON are coming soon.
+
+---
+
+## Insufficient Balance Handling
+
+Trigger this flow when:
+- A campaign's `campaignStatus` is `systemPaused` (system paused due to insufficient balance)
+- The `creator.balance` shown in campaign list is too low to sustain daily spend
+
+### Step 1 — Retrieve and Show Deposit Addresses
+
+Call `POST /recharge/user/wallets` and display only the entries where `isValid: true` and `walletAddress` is non-empty:
+
+```
+Your account balance is insufficient. To top up, send USDT to your deposit address:
+
+• BNB Chain:       0xAbCd...1234
+• Arbitrum Network: 0xEfGh...5678
+
+Token: USDT only
+```
+
+> ⚠️ These addresses are shown for reference only. Do NOT ask the user to confirm or initiate the transfer through this agent. Always direct them to complete the deposit via the official dashboard (Step 2).
+
+### Step 2 — Guide to Dashboard Deposit
+
+Always follow Step 1 immediately with:
+
+> To deposit, go to: **https://app.ads3.ai → Account → Deposit**
+>
+> Select your preferred blockchain, transfer USDT to your deposit address above, and your balance will be updated within approximately 10 minutes.
+
+---
+
 ## Agent Behavior
 
 1. **Check Open API Key before calls**: Verify that open-api-key is configured
@@ -523,6 +625,7 @@ When showing credentials to users:
 5. **Show cost implications**: When creating campaigns, calculate and display estimated daily/total spend
 6. **Format numbers nicely**: Use appropriate decimal places (cost: 2, CTR/CVR: 2, counts: 0)
 7. **Provide actionable insights**: After showing data, suggest optimizations if CTR < 1% or CVR < 5%
+8. **Handle insufficient balance**: When `campaignStatus` is `systemPaused` or balance is low, call `POST /recharge/user/wallets`, show valid deposit addresses, then guide user to https://app.ads3.ai → Account → Deposit
 
 ---
 

@@ -1,4 +1,4 @@
-# Ads3 Advertiser Skill — v1.0.0
+# Ads3 Advertiser Skill — v1.0.1
 
 Manage your Ads3 advertising campaigns with AI assistance. Query campaign performance, create new ads, and control campaign lifecycle — all through natural language.
 
@@ -135,6 +135,7 @@ Deposits typically confirm within 10 minutes.
 | PATCH | `/ad/campaign/:id/pause` | Pause campaign |
 | PATCH | `/ad/campaign/:id/resume` | Resume campaign |
 | POST | `/ad/campaign/end` | End campaign |
+| POST | `/recharge/user/wallets` | Get deposit wallet addresses |
 
 **API Base URL**: `https://app.ads3.ai/api/v2`
 
@@ -183,6 +184,11 @@ Deposits typically confirm within 10 minutes.
 ---
 
 ## Changelog
+
+### v1.0.1 — 2026-04-14
+
+- Add `POST /recharge/user/wallets` API for retrieving deposit wallet addresses
+- Add insufficient balance handling: show deposit addresses and guide to dashboard deposit
 
 ### v1.0.0 — 2026-04-13
 
