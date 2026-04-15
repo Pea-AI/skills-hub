@@ -1,4 +1,4 @@
-# Ads3 Advertiser Skill — v1.0.1
+# Ads3 Advertiser Skill — v1.0.2
 
 Manage your Ads3 advertising campaigns with AI assistance. Query campaign performance, create new ads, and control campaign lifecycle — all through natural language.
 
@@ -36,7 +36,7 @@ cp -r skills-hub/advertiser .claude/skills/
 
 ### Step 2 — Get Your Open API Key
 
-1. Login to [Ads3 Dashboard](https://app.ads3.ai)
+1. Login to [Ads3 Dashboard](https://app.ads3.ai/ads)
 2. Navigate to **Account** → **Open API Keys**
 3. Click **Create Open API Key**
 4. Copy and save your Open API key securely — **it is only shown once**
@@ -184,6 +184,10 @@ Deposits typically confirm within 10 minutes.
 ---
 
 ## Changelog
+
+### v1.0.2 — 2026-04-15
+
+- Fix dashboard URL to `https://app.ads3.ai/ads`
 
 ### v1.0.1 — 2026-04-14
 

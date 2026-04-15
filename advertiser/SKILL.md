@@ -5,7 +5,7 @@ description: |
   Triggers: 'ad data', 'ad performance', 'advertiser', 'campaign', 'ad status', 'create ad', 'pause ad'.
 metadata:
   author: ads3
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 # Advertiser Skill
@@ -610,7 +610,7 @@ Token: USDT only
 
 Always follow Step 1 immediately with:
 
-> To deposit, go to: **https://app.ads3.ai → Account → Deposit**
+> To deposit, go to: **https://app.ads3.ai/ads → Account → Deposit**
 >
 > Select your preferred blockchain, transfer USDT to your deposit address above, and your balance will be updated within approximately 10 minutes.
 
@@ -625,7 +625,7 @@ Always follow Step 1 immediately with:
 5. **Show cost implications**: When creating campaigns, calculate and display estimated daily/total spend
 6. **Format numbers nicely**: Use appropriate decimal places (cost: 2, CTR/CVR: 2, counts: 0)
 7. **Provide actionable insights**: After showing data, suggest optimizations if CTR < 1% or CVR < 5%
-8. **Handle insufficient balance**: When `campaignStatus` is `systemPaused` or balance is low, call `POST /recharge/user/wallets`, show valid deposit addresses, then guide user to https://app.ads3.ai → Account → Deposit
+8. **Handle insufficient balance**: When `campaignStatus` is `systemPaused` or balance is low, call `POST /recharge/user/wallets`, show valid deposit addresses, then guide user to https://app.ads3.ai/ads → Account → Deposit
 
 ---
 
@@ -633,7 +633,7 @@ Always follow Step 1 immediately with:
 
 Users can obtain an Open API Key by:
 
-1. Login to https://app.ads3.ai dashboard
+1. Login to https://app.ads3.ai/ads
 2. Navigate to **Account** → **Open API Keys** page
 3. Click **Create Open API Key** button
 4. Enter a key name (e.g., "My Skill Key")

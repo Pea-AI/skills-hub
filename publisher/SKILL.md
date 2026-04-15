@@ -5,7 +5,7 @@ description: |
   Triggers: 'publisher', 'block revenue', 'monetization', 'ad placement', 'traffic revenue', 'daily revenue', 'platform', 'withdraw', 'earnings', 'balance'.
 metadata:
   author: ads3
-  version: "1.0.0"
+  version: "1.0.2"
 ---
 
 # Publisher Skill
@@ -622,7 +622,7 @@ When showing credentials to users:
 
 Users can obtain an Open API Key by:
 
-1. Login to https://app.ads3.ai dashboard
+1. Login to https://app.ads3.ai/ads
 2. Navigate to **Account** → **Open API Keys** page
 3. Click **Create Open API Key** button
 4. Enter a key name (e.g., "My Skill Key")

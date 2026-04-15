@@ -1,4 +1,4 @@
-# Ads3 Publisher Skill — v1.0.0
+# Ads3 Publisher Skill — v1.0.2
 
 Manage your Ads3 publisher account with AI assistance. Query platform and block performance, track earnings, check balance, and submit withdrawals — all through natural language.
 
@@ -38,7 +38,7 @@ cp -r skills-hub/publisher .claude/skills/
 
 ### Step 2 — Get Your Open API Key
 
-1. Login to [Ads3 Dashboard](https://app.ads3.ai)
+1. Login to [Ads3 Dashboard](https://app.ads3.ai/ads)
 2. Navigate to **Account** → **Open API Keys**
 3. Click **Create Open API Key**
 4. Copy and save your Open API key securely — **it is only shown once**
@@ -158,6 +158,10 @@ Publishers register platforms (Telegram bots, web apps, etc.) and create ad plac
 ---
 
 ## Changelog
+
+### v1.0.2 — 2026-04-15
+
+- Fix dashboard URL to `https://app.ads3.ai/ads`
 
 ### v1.0.0 — 2026-04-14
 
